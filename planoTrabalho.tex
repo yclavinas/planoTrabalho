@@ -27,25 +27,29 @@ Já a segunda fase é o refinamento dos parâmetros. Nesta fase os parâmetros d
 \section{Justificativa}
 
 %% problema
-É imprescindível a busca de maneiras eficientes para se realizar processamento de alto desempenho para tarefas de análise de imagens. As análises de imagens de tecido de larga escala são problemas computacionalmente desafiadores. Um dos desafios é obter a escalabilidade dos vários fluxos de trabalho e/ou de grandes conjuntos de imagens. 
+É imprescindível a busca de maneiras eficientes para se realizar processamento de alto desempenho para tarefas de análise de imagens. As análises de imagens de tecido de larga escala são problemas computacionalmente desafiadores. Um dos desafios é obter a escalabilidade dos vários fluxos de trabalho e/ou de grandes conjuntos de imagens com ganhos de qualidade. 
 
-O \textit{National Institute of Health’s The Cancer Genome Atlas} (TCGA) está produzindo uma grande quantidade de dados multimodais que contém contendo imagens patologia, radiologia, genômica e dados clínicos para o glioblastoma (gliomas cancerígenos) e outros tipo de tumor~\cite{mclendon2008comprehensive}. Atualmente, o RTF contém um banco de dados com mais de 600 imagens cada com uma com uma média de 400 mil núcleos por secção. O processo de caracterizar as morfologias celulares produz cerca de 1.5GB/seção de meta-dados que descrevem os parâmetros dos algoritmos, os limites dos objetos e as características das células~\cite{cooper2011morphological}.
+O \textit{National Institute of Health’s The Cancer Genome Atlas} (TCGA) disponibiliza uma grande quantidade de dados multimodais que contém contendo imagens patologia, radiologia, genômica e dados clínicos para o glioblastoma (gliomas cancerígenos) e outros tipo de tumor~\cite{mclendon2008comprehensive}. Atualmente, o RTF contém um banco de dados com mais de 600 imagens cada com uma com uma média de 400 mil núcleos por secção. O processo de caracterizar as morfologias celulares produz cerca de 1.5GB/seção de meta-dados que descrevem os parâmetros dos algoritmos, os limites dos objetos e as características das células~\cite{cooper2011morphological}.
 
 %% modelo
-Uma vez que a quantidade de dados gerada é elevada, não é humanamente possível conferir todos resultados da caracterização das células e núcleos. Para isso, buscamos criar modelos capaz de avaliar o conjunto de características computadas.
+Uma vez que a quantidade de dados gerada é elevada, não é humanamente possível conferir todos resultados da caracterização das células e núcleos. Para isso, buscamos criar modelos capaz de avaliar o conjunto de características.
 
-O desenvolvimento desses modelos é necessário para que a etapa de refinamento de parâmetros e a análise de sensibilidade possam ser aplicados no contexto da computação de características. Após a implementação do modelo mais representativo capaz de avaliar a qualidade de um conjunto de características, podemos comparar os resultados obtidos por um dado conjunto de parâmetros. 
+O desenvolvimento desses modelos é necessário para que as fases de refinamento de parâmetros e a análise de sensibilidade possam ser aplicados no contexto da computação de características. Após a implementação do modelo mais representativo capaz de avaliar a qualidade de um conjunto de características, podemos comparar os resultados obtidos entre os diversos conjuntos de parâmetros. 
 
+No contexto da análise de sensibilidade a utilização dos modelos é fundamentada na necessidade de quantificar a variabilidade dos resultados e verificar a influência dos parâmetros na aplicação. O refinamento de parâmetros é a fase com maior impacto nos recursos computacionais, uma vez que quanto mais combinações forem consideradas, melhor o espaço de busca é explorado. Porém, podemos ter parâmetros cuja influência nos resultados das análises seja baixa. Para verificar quais são os parâmetros mais com maior influência e eliminar os de menor influência pode-se utilizar a análise de sensibilidade. Assim, teremos um espaço de busca potencialmente menor e com o conjunto de parâmetros reduzidos diminui-se o impacto do refinamento de parâmetros nos recursos computacionais.
 
 \section{Objetivos}
 
-%A partir do trabalho já realizado em [1], pretende-se melhorar a otimização de avaliação de parâmetros, diminuindo o grau de granularidade do aproveitamento de computação replicada, dessa forma, diminuindo o tempo de execução geral de um estágio de avaliação de parâmetros.
+A partir do trabalho já realizado em [como citar um trabalho em submmited], pretende-se melhorar a otimização de avaliação de parâmetros com foco direcionado para a etapa de classificação das características. Dessa forma espera-se incrementar a qualidade das análises realizadas pelo sistema e, se possível, com ganhamos computacionais de tempo.
+
+
 \subsection{Objetivos Específicos}
-%\begin{enumerate}
-%	\item  Gerar e implementar uma nova maneira de representação de tarefas de workflows que tenha um menor grau de granularidade;
-%\item Atualizar a implementação atual da ferramenta RTF[2] para aproveitar computação replicada com menor grau de granularidade;
-%\item Otimizar o sistema de avaliação simultânea de parâmetros pelo uso de heurísticas que realizem as escolhas de gerações levando em consideração o aproveitamento de computação replicada que pode ser alcançado.
-%\end{enumerate}
+
+\begin{enumerate}
+	\item  Gerar e implementar modelos de avaliação das características das células e núcleos;
+\item Atualizar a implementação atual da ferramenta RTF[2] para aproveitar computação replicada com menor grau de granularidade;
+\item Otimizar o sistema de avaliação simultânea de parâmetros pelo uso de heurísticas que realizem as escolhas de gerações levando em consideração o aproveitamento de computação replicada que pode ser alcançado.
+\end{enumerate}
 
 
 \section{Revisão da Literatura}
@@ -66,7 +70,7 @@ Este trabalho será realizado em XXX etapas:
 
 
 \section{Cronograma}
-\begin{table}[]
+\begin{table}[!h]
 	\centering
 	\caption{My caption}
 	\label{my-label}
