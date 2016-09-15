@@ -1,6 +1,6 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
-
+\usepackage{gensymb}
 
 \begin{document}
 	
@@ -8,18 +8,65 @@
 	
 \section{Introdução}
 
+Esta pesquisa começa com o objetivo de melhorar a escalabilidade de sistemas computacionais para o estudo de imagens biomédicas de alta resolução assim como melhorar a qualidade das análises elaboradas por estes sistemas. O foco principal é direcionado para os sistemas que trabalham com a análise de imagens de secções microscópicas de tecidos. Analisar essas imagens possibilita o estudo de doença em nível celular ou sub-celular. Estas análises podem auxiliar na caracterização da morfologia dos tecidos sub-celulares e pode facilitar o entendimento dos mecanismos de doenças e facilitar a avaliação da resposta aos tratamentos de uma doença. Isto é possível, pois muitas informações sobre células e morfologia celular podem ser obtidas a partir das análises destas imagens.
+
+Entretanto, capturar e analisar essas informações em imagens de larga escala mostra-se um desafio, uma vez que é necessário a revisão humana subjetiva~\cite{kong2011comprehensive}. Como alternativa, a análise de imagens computadorizadas provém uma oportunidade de análise das características anatômicas de entidades biológicas em secções de imagens de tecido~\cite{kong2010texture}.
+
+Uma plataforma disponível para realizar análise de imagens médicas é o desenvolvida pelo grupo XXXX é o \textit{Region Template Framework} (RTF)~\cite{teodoro2014region}. Esse sistema pode analisar imagens de tecidos de forma a extrair informações de elementos das imagens (como células ou núcleos celulares) e algumas de suas características, como tamanho, formato e aspectos da textura. Essas características são utilizadas para desenvolver modelos morfológicos que podem ser utilizados para o ganho de novos conhecimentos. Um exemplo da utilidade desta plataforma é na análise de gliomas difusos, os núcleos das células do tumor são de interesse significativo para a comunidade científica~\cite{gupta2005clarifying}.
+
+Um workflow padrão desta plataforma consiste nas seguintes etapas: normalização, segmentação, computação de características, refinamento das características e classificação. As três primeiras etapas tipicamente são as mais custosas em termos computacionais. 
+
+Como citado no início deste documento, esta pesquisa busca melhorar a escalabilidade de sistemas de análise biomédicas. Para melhorarmos a escalabilidade do RTF, podemos buscar estratégias que possibilitem substituir a computação por uma modelagem de características e assim esperamos diminuir o custo computacional total do sistema. A etapa seguinte depois da computação de características é a etapa de refinamento das características, apesar de não ser custosa computacionalmente, influi diretamente na qualidade das análises do modelo. Especialmente no caso da substituição da computação de características por um modelo, esta etapa passa a ter uma importância ainda mais significativa na qualidade das análises feitas pelo RTF.
+
+
+
 \section{Justificativa}
 
 \section{Objetivos}
+
+%A partir do trabalho já realizado em [1], pretende-se melhorar a otimização de avaliação de parâmetros, diminuindo o grau de granularidade do aproveitamento de computação replicada, dessa forma, diminuindo o tempo de execução geral de um estágio de avaliação de parâmetros.
 \subsection{Objetivos Específicos}
+%\begin{enumerate}
+%	\item  Gerar e implementar uma nova maneira de representação de tarefas de workflows que tenha um menor grau de granularidade;
+%\item Atualizar a implementação atual da ferramenta RTF[2] para aproveitar computação replicada com menor grau de granularidade;
+%\item Otimizar o sistema de avaliação simultânea de parâmetros pelo uso de heurísticas que realizem as escolhas de gerações levando em consideração o aproveitamento de computação replicada que pode ser alcançado.
+%\end{enumerate}
+
 
 \section{Revisão da Literatura}
 
 \section{Metodologia}
-
+%Inicialmente, será conduzida uma investigação mais detalhada da literatura sobre caracterização e previsão de custos de tarefas computacionais, e sobre algoritmos genéticos e gerais de busca. Também será estudado mais profundamente o domínio de workflows de tratamento de imagens médicas. Em seguida será implementada a estratégias de divisão de macro-tarefas (e.g. segmentação, normalização, etc.) em tarefas de grão fino, e a heurísticas de geração de workflows
 \section{Plano de Trabalho}
 
+%Este trabalho será realizado em quatro etapas:
+%\begin{enumerate}
+%	\item Implementação de tarefas grão-fino;
+%	\item Implementação da heurísticas de criação 
+%	orientada de gerações para o GA;
+%	\item Realização de testes para avaliar o desempenho obtido por cada otimização individualmente e em conjunto;
+%	\item análise de resultados de testes e escrita da dissertação.
+%\end{enumerate}
+
+
 \section{Cronograma}
+\begin{table}[]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{Atividade} & \multicolumn{2}{l|}{2017} & \multicolumn{2}{l|}{2018} \\ \hline
+		& 1\degree    & 2\degree    & 1\degree    & 2\degree    \\ \hline
+		Cursar Disciplinas de Mestrado  & X           &             &             &             \\ \hline
+		Revisão Bibliográfica           & X           & X           &             &             \\ \hline
+		Implementação das tarefas X, Y  &             & X           & X           &             \\ \hline
+		Implementação de W, Z     &             &             & X           &             \\ \hline
+		Escrita Da Dissertação          &             &             & X           & X           \\ \hline
+	\end{tabular}
+\end{table}
+
+
 
 %	\medskip
 	
