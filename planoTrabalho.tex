@@ -9,15 +9,18 @@
 \section{Introdução}
 
 
-Esta pesquisa tem como objetivo melhorar a qualidade das análises realizadas pelos sistemas computacionais para o estudo de imagens biomédicas de alta resolução. O foco principal é direcionado para os sistemas que trabalham com a análise de imagens de secções microscópicas de tecidos. Analisar essas imagens possibilita o estudo de doença em nível celular ou sub-celular. Estas análises podem auxiliar na caracterização da morfologia dos tecidos sub-celulares e pode facilitar o entendimento dos mecanismos de doenças e facilitar a avaliação da resposta aos tratamentos de uma doença. Isto é possível, pois muitas informações sobre células e morfologia celular podem ser obtidas a partir das análises destas imagens.
+Esta pesquisa tem como objetivo melhorar a qualidade das análises realizadas pelos sistemas computacionais para o estudo de imagens biomédicas de alta resolução. O foco principal é direcionado para os sistemas que trabalham com a análise de imagens de secções microscópicas de tecidos. Analisar essas imagens possibilita o estudo da doença em nível celular ou sub-celular. Estas análises podem auxiliar na caracterização da morfologia dos tecidos sub-celulares e podem facilitar o entendimento dos mecanismos de doenças e melhorar a avaliação da resposta aos tratamentos de uma doença. Isto é possível, pois muitas informações sobre células e morfologia celular podem ser obtidas a partir das análises destas imagens.
 
 Entretanto, capturar e analisar essas informações em imagens de larga escala mostra-se um desafio, uma vez que é necessário a revisão humana subjetiva~\cite{kong2011comprehensive}. Como alternativa, a análise de imagens computadorizadas provém uma oportunidade de observação das características anatômicas de entidades biológicas em secções de imagens de tecido~\cite{kong2010texture}.
 
-Uma plataforma disponível para realizar análise de imagens médicas é o desenvolvida pelo grupo XXXX é o \textit{Region Template Framework} (RTF)~\cite{teodoro2014region}. Esse sistema pode analisar imagens de tecidos de forma a extrair informações de elementos das imagens (como células ou núcleos celulares) e algumas de suas características, como tamanho, formato e aspectos da textura. Essas características são utilizadas para desenvolver modelos morfológicos que podem ser utilizados para o aprendizado de novos conhecimentos. Um exemplo da utilidade desta plataforma é na análise de gliomas difusos, os núcleos das células do tumor são de interesse significativo para a comunidade científica~\cite{gupta2005clarifying}.
+Uma plataforma disponível para realizar análise de imagens médicas é o desenvolvida pelo grupo do prof George Teodoro é o \textit{Region Template Framework} (RTF)~\cite{teodoro2014region}. Esse sistema pode analisar imagens de tecidos de forma a extrair informações de elementos das imagens (como células ou núcleos celulares) e algumas de suas características, como tamanho, formato e aspectos da textura. Essas características são utilizadas para desenvolver modelos morfológicos que podem ser utilizados para o aprendizado de novos conhecimentos. Um exemplo da utilidade desta plataforma é na análise de gliomas difusos, os núcleos das células do tumor são de interesse significativo para a comunidade científica~\cite{gupta2005clarifying}.
 
-Um workflow padrão desta plataforma consiste nas seguintes etapas: normalização, segmentação, computação de características, refinamento das características e classificação. As três primeiras etapas tipicamente são as mais custosas em termos computacionais. 
+Um fluxo de trabalho padrão desta plataforma consiste nas seguintes etapas: normalização, segmentação, computação de características, refinamento das características e classificação. As três primeiras etapas tipicamente são as mais custosas em termos computacionais. 
 
-Como citado no início deste documento, esta pesquisa busca melhorar a qualidade das análises de sistemas de análise biomédicas. Para melhorarmos a qualidade das análises do RTF, iremos buscar estratégias que auxiliem na avaliação da computação de características. A partir das melhores estratégias estudadas poderemos desenvolver modelos capazes de avaliar com alta precisão das características obtidas pelos métodos computacionais. Esses modelos podem ser utilizadas na a etapa de refinamento das características, uma vez que seremos capazes de comparar os diversos resultados obtidos. Ela é uma etapa que influi diretamente na qualidade dos resultados das análises, ao ajustar os parâmetros buscando resultados com maior acurácia.
+Como citado no início deste documento, esta pesquisa busca melhorar a qualidade das análises de sistemas de análise biomédicas. Um fluxo de trabalho deste sistema é dependente das imagens analisadas, logo o resultado depende dos parâmetros de entrada do sistema. Para melhorar a qualidade das análises, portanto, é necessário estudar e compreender o impacto desses parâmetros no resultados. Atualmente, na etapa de segmentação, algumas análises sobre este impacto já foram averiguadas. Porém, como dito anteriormente, essas análises dependem da revisão subjetiva de especialistas. Infelizmente, dado o tamanho das imagens, essa revisão torna-se bastante proibitiva. 
+
+Para melhorarmos a qualidade das análises do RTF, iremos buscar estratégias que auxiliem na avaliação das características extraídas de uma imagem. A partir das melhores estratégias estudadas poderemos desenvolver modelos capazes de avaliar com alta precisão as características obtidas pelos métodos computacionais. Esses modelos podem ser utilizadas na a etapa de refinamento das características, uma vez que seremos capazes de comparar os diversos resultados obtidos. Ela é uma etapa que influi diretamente na qualidade dos resultados das análises, ao ajustar os parâmetros buscando resultados com maior acurácia.
+
 
 A etapa de refinamento de características pode ser separada em duas fases. A primeira, é a aplicação de métodos e técnicas de análise de sensibilidade (SA). Esses métodos e técnicas permitem ao usuário entender e quantificar a variabilidade dos resultados de um sistema computacional e pode apontar quais são os parâmetros de entrada que causaram essas variabilidades. A SA pode ser útil por exemplo para entender os limites dos resultados, para a remoção de parâmetros com baixa influência nos resultados, etc.
 
@@ -32,7 +35,7 @@ Já a segunda fase é o refinamento dos parâmetros. Nesta fase os parâmetros d
 O \textit{National Institute of Health’s The Cancer Genome Atlas} (TCGA) disponibiliza uma grande quantidade de dados multimodais que contém contendo imagens patologia, radiologia, genômica e dados clínicos para o glioblastoma (gliomas cancerígenos) e outros tipo de tumor~\cite{mclendon2008comprehensive}. Atualmente, o RTF contém um banco de dados com mais de 600 imagens cada com uma com uma média de 400 mil núcleos por secção. O processo de caracterizar as morfologias celulares produz cerca de 1.5GB/seção de meta-dados que descrevem os parâmetros dos algoritmos, os limites dos objetos e as características das células~\cite{cooper2011morphological}.
 
 %% modelo
-Uma vez que a quantidade de dados gerada é elevada, não é humanamente possível conferir todos resultados da caracterização das células e núcleos. Para isso, buscamos criar modelos capaz de avaliar o conjunto de características.
+Uma vez que a quantidade de dados gerada é elevada, não é humanamente possível avaliar todos resultados da caracterização das células e núcleos. Para isso, buscamos criar modelos capazes de avaliar o conjunto de características.
 
 O desenvolvimento desses modelos é necessário para que as fases de refinamento de parâmetros e a análise de sensibilidade possam ser aplicados no contexto da computação de características. Após a implementação do modelo mais representativo capaz de avaliar a qualidade de um conjunto de características, podemos comparar os resultados obtidos entre os diversos conjuntos de parâmetros. 
 
@@ -47,25 +50,25 @@ A partir do trabalho já realizado em [como citar um trabalho em submmited], pre
 
 \begin{enumerate}
 	\item  Gerar e implementar modelos de avaliação das características das células e núcleos;
-\item Atualizar a implementação atual da ferramenta RTF[2] para aproveitar computação replicada com menor grau de granularidade;
-\item Otimizar o sistema de avaliação simultânea de parâmetros pelo uso de heurísticas que realizem as escolhas de gerações levando em consideração o aproveitamento de computação replicada que pode ser alcançado.
+\item  Atualizar os métodos e técnicas de análise de sensibilidade e refinamento de parâmetros disponíveis no RTF;
+\item Otimizar a qualidade das análise das características das células e núcleo e consequentemente a do sistema como um todo.
 \end{enumerate}
 
 
 \section{Revisão da Literatura}
 
 \section{Metodologia}
-Inicialmente, será conduzida uma investigação mais detalhada da literatura sobre caracterização e previsão de custos de tarefas computacionais, sobre métodos de refinamento de parâmetros, com foco em algoritmos genéticos e os presentes na plataforma RTF, e sobre modelagem de características de células e núcleos celulares. Também será estudado mais profundamente o domínio de workflows de tratamento de imagens médicas. Em seguida, serão incorporados os modelos de características de células e núcleos celulares em conjunto com as técnicas de refinamento de parâmetros mais promissores da literatura e os já presentes na plataforma RTF.
+Inicialmente, será conduzida uma investigação mais detalhada da literatura sobre caracterização e previsão de custos de tarefas computacionais, sobre métodos de refinamento de parâmetros, com foco em algoritmos genéticos e os presentes na plataforma RTF, e sobre modelagem de características de células e núcleos celulares. Também será estudado mais profundamente o domínio de fluxos de trabalho de tratamento de imagens médicas. Em seguida, serão incorporados os modelos de características de células e núcleos celulares em conjunto com as técnicas de refinamento de parâmetros mais promissores da literatura e os já presentes na plataforma RTF.
 
 \section{Plano de Trabalho}
 
-Este trabalho será realizado em XXX etapas:
+Este trabalho será realizado em 5 etapas:
 \begin{enumerate}
 	\item Implementação da modelagem das características de células e núcleos celulares;
 	\item Implementação de métodos de refinamento de parâmetros;
 	\item Análise do reuso dos métodos de refinamento de parâmetros do RTF;
 	\item Realização de testes para avaliar o desempenho obtido por cada otimização individualmente e em conjunto;
-	\item análise de resultados de testes e escrita da dissertação.
+	\item Análise de resultados de testes e escrita da dissertação.
 \end{enumerate}
 
 
