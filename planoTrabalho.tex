@@ -2,6 +2,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage{gensymb}
 
+
+%\def\floatpagefraction{0.95}
+\linespread{0.97}
+
+
 \begin{document}
 	
 %	\maketitle
@@ -9,11 +14,34 @@
 \section{Introdução}\label{introducao}
 
 
-Esta pesquisa tem como objetivo melhorar a qualidade das análises realizadas pelos sistemas computacionais para o estudo de imagens biomédicas de alta resolução. O foco principal é direcionado para os sistemas que trabalham com a análise de imagens de secções microscópicas de tecidos. Analisar essas imagens possibilita o estudo da doença em nível celular ou sub-celular. Estas análises podem auxiliar na caracterização da morfologia dos tecidos sub-celulares e podem facilitar o entendimento dos mecanismos de doenças e melhorar a avaliação da resposta aos tratamentos de uma doença. Isto é possível, pois muitas informações sobre células e morfologia celular podem ser obtidas a partir das análises destas imagens.
+Esta pesquisa tem como objetivo melhorar a qualidade das análises realizadas
+pelos sistemas computacionais para o estudo de imagens biomédicas de alta
+resolução. O foco principal é direcionado para os sistemas que trabalham com a
+análise de imagens de secções microscópicas de tecidos. Analisar essas imagens
+possibilita o estudo da doença em nível celular ou sub-celular. Estas análises
+podem auxiliar na caracterização da morfologia dos tecidos sub-celulares e
+podem facilitar o entendimento dos mecanismos de doenças e melhorar a avaliação
+da resposta aos tratamentos de uma doença. Isto é possível, pois muitas
+informações sobre células e morfologia celular podem ser obtidas a partir das
+análises destas imagens.
 
-Entretanto, capturar e analisar essas informações em imagens de larga escala mostra-se um desafio, uma vez que é necessário a revisão humana subjetiva~\cite{kong2011comprehensive}. Como alternativa, a análise de imagens computadorizadas provém uma oportunidade de observação das características anatômicas de entidades biológicas em secções de imagens de tecido~\cite{kong2010texture}.
+Entretanto, capturar e analisar essas informações em imagens de larga escala
+mostra-se um desafio, uma vez que é necessário a revisão humana
+subjetiva~\cite{kong2011comprehensive}. Como alternativa, a análise de imagens
+computadorizadas provém uma oportunidade de observação das características
+anatômicas de entidades biológicas em secções de imagens de
+tecido~\cite{kong2010texture}.
 
-Uma plataforma disponível para realizar análise de imagens médicas é a desenvolvida pelo grupo do prof George Teodoro denominada \textit{Region Template Framework} (RTF)~\cite{teodoro2014region}. Esse sistema pode analisar imagens de tecidos de forma a extrair informações de elementos das imagens (como células ou núcleos celulares) e algumas de suas características, como tamanho, formato e aspectos da textura. Essas características são utilizadas para desenvolver modelos morfológicos que podem ser utilizados para o aprendizado de novos conhecimentos. Um exemplo da utilidade desta plataforma é na análise de gliomas difusos, os núcleos das células do tumor são de interesse significativo para a comunidade científica~\cite{gupta2005clarifying}.
+Uma plataforma disponível para realizar análise de imagens médicas é a
+desenvolvida pelo grupo do prof George Teodoro denominada \textit{Region
+Template Framework} (RTF)~\cite{teodoro2014region}. Esse sistema pode analisar
+imagens de tecidos de forma a extrair informações de elementos das imagens
+(como células ou núcleos celulares) e algumas de suas características, como
+tamanho, formato e aspectos da textura. Essas características são utilizadas
+para desenvolver modelos morfológicos que podem ser utilizados para o
+aprendizado de novos conhecimentos. Um exemplo da utilidade desta plataforma é
+na análise de gliomas difusos, os núcleos das células do tumor são de interesse
+significativo para a comunidade científica~\cite{gupta2005clarifying}.
 
 Um fluxo de trabalho padrão desta plataforma consiste nas seguintes etapas: normalização, segmentação, computação de características, refinamento das características e classificação. Uma vez que um fluxo de trabalho busca analisar imagens de tecidos, temos que este sistema é dependente das imagens analisadas e consequentemente o resultado depende dos parâmetros de entrada do sistema. Para melhorar a qualidade das análises, portanto, é necessário estudar e compreender o impacto desses parâmetros no resultados. 
 
@@ -59,7 +87,7 @@ A partir do trabalho já realizado em [como citar um trabalho em submmited], pre
 
 Na sessão~\ref{introducao} comentamos que buscamos impactar a qualidade das análises do RTF ao aprimorar a avaliação das características extraídas de uma imagem. Esse aprimoramento é dividido em duas fases, a análise de sensibilidade (SA) e o refinamento de parâmetros. Para que a aplicação dessas fases sejam viáveis em um sistema de análise de imagens é necessário propor e utilizar eficientemente SA e método de refinamento.
 
-Já estão presentes, no RTF, os métodos de SA Variance-based Decomposition (VBD)~\cite{weirs2012sensitivity}~\cite{sobol2001global}  e o Morris One- At-A-Time design (MOAT)~\cite{morris1991factorial}~\cite{campolongo2007effective}. Para o refinamento de parâmetros, os métodos existentes são o Nelder-Mead simplex (NM), Parallel Rank Order (PRO), e o Algoritmo Genético de auto-refinamento. 
+Já estão presentes, no RTF, os métodos de SA Variance-based Decomposition (VBD)~\cite{weirs2012sensitivity}~\cite{sobol2001global}  e o Morris One-At-A-Time design (MOAT)~\cite{morris1991factorial}~\cite{campolongo2007effective}. Para o refinamento de parâmetros, os métodos existentes são o Nelder-Mead simplex (NM), Parallel Rank Order (PRO), e o Algoritmo Genético de auto-refinamento. 
 
 Estes métodos serão utilizados como ponto de partida do trabalho proposto e outros métodos serão incorporados e seus resultados e influências serão analisados. Algumas opções que serão analisadas como os métodos de otimização Particle swarm, de otimização by branch-and-fit, de otimização Bayesiana, algoritmos de Hit-and-Run.
 
@@ -97,8 +125,12 @@ Este trabalho será realizado em 5 etapas:
 
 
 %	\medskip
+
+\newcommand{\BIBdecl}{\setlength{\itemsep}{0.2 em}}
+\linespread{0.9}
 	
-	\bibliographystyle{unsrt}%Used BibTeX style is unsrt
-	\bibliography{sample}
-	
+\bibliographystyle{unsrt}%Used BibTeX style is unsrt
+\begin{scriptsize}
+\bibliography{sample}
+\end{scriptsize}	
 \end{document}
