@@ -1,7 +1,10 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{gensymb}
-
+\usepackage[a4paper,bindingoffset=0.2in,%
+left=1in,right=1in,top=1in,bottom=1in,%
+footskip=.25in]{geometry}
+\usepackage{blindtext}
 
 %\def\floatpagefraction{0.95}
 \linespread{0.97}
@@ -60,18 +63,18 @@ A etapa de refinamento de características pode ser separada em duas fases. A pr
 %% problema
 É imprescindível a busca de maneiras eficientes para se realizar processamento de alto desempenho para tarefas de análise de imagens. As análises de imagens de tecido de larga escala são problemas computacionalmente desafiadores. Um dos desafios é obter a escalabilidade dos vários fluxos de trabalho e/ou de grandes conjuntos de imagens com ganhos de qualidade. 
 
-O \textit{National Institute of Health’s The Cancer Genome Atlas} (TCGA) disponibiliza uma grande quantidade de dados multimodais que contém contendo imagens patologia, radiologia, genômica e dados clínicos para o glioblastoma (gliomas cancerígenos) e outros tipo de tumor~\cite{mclendon2008comprehensive}. Atualmente, o RTF contém um banco de dados com mais de 600 imagens cada com uma com uma média de 400 mil núcleos por secção. O processo de caracterizar as morfologias celulares produz cerca de 1.5GB/seção de meta-dados que descrevem os parâmetros dos algoritmos, os limites dos objetos e as características das células~\cite{cooper2011morphological}.
+O \textit{National Institute of Health’s The Cancer Genome Atlas} (TCGA) disponibiliza uma grande quantidade de dados multimodais contendo imagens de patologia, radiologia, genômica e dados clínicos para o glioblastoma (gliomas cancerígenos) e outros tipo de tumores~\cite{mclendon2008comprehensive}. Atualmente, o RTF contém um banco de dados com mais de 600 imagens cada com uma com uma média de 400 mil núcleos por secção. O processo de caracterizar as morfologias celulares produz cerca de 1.5GB/seção de meta-dados que descrevem os parâmetros dos algoritmos, os limites dos objetos e as características das células~\cite{cooper2011morphological}.
 
 %% modelo
 Uma vez que a quantidade de dados gerada é elevada, não é humanamente possível avaliar todos resultados da caracterização das células e núcleos. Para isso, buscamos criar modelos capazes de avaliar o conjunto de características.
 
 O desenvolvimento desses modelos é necessário para que as fases de refinamento de parâmetros e a análise de sensibilidade possam ser aplicados no contexto da computação de características. Após a implementação do modelo mais representativo capaz de avaliar a qualidade de um conjunto de características, podemos comparar os resultados obtidos entre os diversos conjuntos de parâmetros. 
 
-No contexto da análise de sensibilidade a utilização dos modelos é fundamentada na necessidade de quantificar a variabilidade dos resultados e verificar a influência dos parâmetros na aplicação. O refinamento de parâmetros é a fase com maior impacto nos recursos computacionais, uma vez que quanto mais combinações forem consideradas, melhor o espaço de busca é explorado. Porém, podemos ter parâmetros cuja influência nos resultados das análises seja baixa. Para verificar quais são os parâmetros mais com maior influência e eliminar os de menor influência pode-se utilizar a análise de sensibilidade. Assim, teremos um espaço de busca potencialmente menor e com o conjunto de parâmetros reduzidos diminui-se o impacto do refinamento de parâmetros nos recursos computacionais.
+%No contexto da análise de sensibilidade a utilização dos modelos é fundamentada na necessidade de quantificar a variabilidade dos resultados e verificar a influência dos parâmetros na aplicação. O refinamento de parâmetros é a fase com maior impacto nos recursos computacionais, uma vez que quanto mais combinações forem consideradas, melhor o espaço de busca é explorado. Porém, podemos ter parâmetros cuja influência nos resultados das análises seja baixa. Para verificar quais são os parâmetros mais com maior influência e eliminar os de menor influência pode-se utilizar a análise de sensibilidade. Assim, teremos um espaço de busca potencialmente menor e com o conjunto de parâmetros reduzidos diminui-se o impacto do refinamento de parâmetros nos recursos computacionais.
 
 \section{Objetivos}
 
-A partir do trabalho já realizado em [como citar um trabalho em submmited], pretende-se melhorar a otimização de avaliação de parâmetros com foco direcionado para a etapa de classificação das características. Dessa forma espera-se incrementar a qualidade das análises realizadas pelo sistema e, se possível, com ganhamos computacionais de tempo.
+A partir do trabalho já realizado em~\cite{globalsensitibity}, pretende-se melhorar a otimização de avaliação de parâmetros com foco direcionado para a etapa de classificação das características. Dessa forma espera-se incrementar a qualidade das análises realizadas pelo sistema e, se possível, com ganhamos computacionais de tempo.
 
 
 \subsection{Objetivos Específicos}
@@ -85,11 +88,17 @@ A partir do trabalho já realizado em [como citar um trabalho em submmited], pre
 
 \section{Revisão da Literatura}
 
-Na sessão~\ref{introducao} comentamos que buscamos impactar a qualidade das análises do RTF ao aprimorar a avaliação das características extraídas de uma imagem. Esse aprimoramento é dividido em duas fases, a análise de sensibilidade (SA) e o refinamento de parâmetros. Para que a aplicação dessas fases sejam viáveis em um sistema de análise de imagens é necessário propor e utilizar eficientemente SA e método de refinamento.
+
+Na Seção~\ref{introducao} comentamos que buscamos impactar a qualidade das análises do RTF ao aprimorar a avaliação das características extraídas de uma imagem. Esse aprimoramento é dividido em duas fases, a análise de sensibilidade (SA) e o refinamento de parâmetros. Para que a aplicação dessas fases sejam viáveis em um sistema de análise de imagens é necessário propor e utilizar eficientemente SA e métodos de refinamento.
+
 
 Já estão presentes, no RTF, os métodos de SA Variance-based Decomposition (VBD)~\cite{weirs2012sensitivity}~\cite{sobol2001global}  e o Morris One-At-A-Time design (MOAT)~\cite{morris1991factorial}~\cite{campolongo2007effective}. Para o refinamento de parâmetros, os métodos existentes são o Nelder-Mead simplex (NM), Parallel Rank Order (PRO), e o Algoritmo Genético de auto-refinamento. 
 
-Estes métodos serão utilizados como ponto de partida do trabalho proposto e outros métodos serão incorporados e seus resultados e influências serão analisados. Algumas opções que serão analisadas como os métodos de otimização Particle swarm, de otimização by branch-and-fit, de otimização Bayesiana, algoritmos de Hit-and-Run.
+A maioria dos trabalhos recentes desenvolvidos para a otimização de parâmetros aplicam técnicas para modelos de segmentação específicos~\cite{kumar2003discriminative, szummer2008learning, mcintosh2007single, schultz2013open}. O sistema Tuner~\cite{torsney2011tuner} foca em algoritmos de segmentação em geral e cria modelos estatísticos que descrevem uma função de resposta da segmentação e utiliza de um modelo Gaussiano para explorar o espaço de busca. Já o sistema DAKOTA inclui método diversos de otimização de parâmetros, assim como métodos para modelagem surrogate, métodos de amostragem estatística de dados, estratégias de otimização baseada em surrogate e etc~\cite{giunta2002use}. Algumas outras opções que também serão analisadas como os métodos de otimização Particle swarm, de otimização by branch-and-fit, de otimização Bayesiana, algoritmos de Hit-and-Run.
+
+Estes métodos serão utilizados como ponto de partida, pois nenhum deles é voltado para a análise de imagens médicas de patologia, logo não são diretamente aplicáveis. Além disso, não existe uma ferramenta ou estudo que aborda o problema de refinamento de parâmetros e/ou de análise de parâmetros voltado para entendimento de características das células de uma imagem, que é o foco desse trabalho.
+
+Para o trabalho proposto as ferramentas já disponíveis no RTF e os métodos pré-citados serão incorporados para análise de sensibilidade e refinamento de parâmetros. Os resultados obtidos e as influências observadas serão analisados, buscando a maximização a qualidade dos resultados gerados pelo RTF. 
 
 \section{Metodologia}
 Inicialmente, será conduzida uma investigação mais detalhada da literatura sobre caracterização e previsão de custos de tarefas computacionais, sobre métodos de refinamento de parâmetros, com foco em algoritmos genéticos e os presentes na plataforma RTF, e sobre modelagem de características de células e núcleos celulares. Também será estudado mais profundamente o domínio de fluxos de trabalho de tratamento de imagens médicas. Em seguida, serão incorporados os modelos de características de células e núcleos celulares em conjunto com as técnicas de refinamento de parâmetros mais promissores da literatura e os já presentes na plataforma RTF.
@@ -102,7 +111,7 @@ Este trabalho será realizado em 5 etapas:
 	\item Implementação de métodos de refinamento de parâmetros;
 	\item Análise do reuso dos métodos de refinamento de parâmetros do RTF;
 	\item Realização de testes para avaliar o desempenho obtido por cada otimização individualmente e em conjunto;
-	\item Análise de resultados de testes e escrita da dissertação.
+	\item Análise de resultados de testes e escrita da dissertação e artigos científicos.
 \end{enumerate}
 
 
