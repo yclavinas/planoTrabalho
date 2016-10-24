@@ -21,22 +21,19 @@ Esta pesquisa tem como objetivo melhorar a qualidade das análises realizadas
 pelos sistemas computacionais para o estudo de imagens biomédicas de alta
 resolução. O foco principal é direcionado para os sistemas que trabalham com a
 análise de imagens de secções microscópicas de tecidos. Analisar essas imagens
-possibilita o estudo da doença em nível celular ou sub-celular. Estas análises
+possibilita o estudo de doenças em nível celular ou sub-celular. Estas análises
 podem auxiliar na caracterização da morfologia dos tecidos sub-celulares e
 podem facilitar o entendimento dos mecanismos de doenças e melhorar a avaliação
-da resposta aos tratamentos de uma doença. Isto é possível, pois muitas
+da resposta aos tratamentos. Isto é possível, pois muitas
 informações sobre células e morfologia celular podem ser obtidas a partir das
-análises destas imagens.
+análises destas imagens~\cite{kong2010texture}
 
 Entretanto, capturar e analisar essas informações em imagens de larga escala
-mostra-se um desafio, uma vez que é necessário a revisão humana
-subjetiva~\cite{kong2011comprehensive}. Como alternativa, a análise de imagens
-computadorizadas provém uma oportunidade de observação das características
-anatômicas de entidades biológicas em secções de imagens de
-tecido~\cite{kong2010texture}.
+mostra-se um desafio, por ser necessário a revisão humana
+subjetiva~\cite{kong2011comprehensive}. 
 
 Uma plataforma disponível para realizar análise de imagens médicas é a
-desenvolvida pelo grupo do prof George Teodoro denominada \textit{Region
+desenvolvida pelo grupo do Prof George Teodoro denominada \textit{Region
 Template Framework} (RTF)~\cite{teodoro2014region}. Esse sistema pode analisar
 imagens de tecidos de forma a extrair informações de elementos das imagens
 (como células ou núcleos celulares) e algumas de suas características, como
@@ -50,7 +47,7 @@ Um fluxo de trabalho padrão desta plataforma consiste nas seguintes etapas: nor
 
 Para melhorarmos a qualidade das análises do RTF, iremos buscar estratégias que auxiliem na avaliação das características extraídas de uma imagem. Ela é uma etapa que influi diretamente na qualidade dos resultados das análises e ao ajustar os parâmetros buscando resultados com maior acurácia poderemos ter uma qualidade maior das análises. 
 
-Atualmente, na etapa de segmentação, algumas estratégias já foram utilizadas para avaliar o impacto dos parâmetros de entrada em um fluxo de trabalho. As etapas de segmentação e de avaliação de características apesar de serem etapas distintas, compartilham atributos similares. Logo, podemos utilizar dos conhecimentos obtidos da utilização dessas estratégias na etapa de segmentação para direcionar um ponto de partida do estudo que será realizado na etapa de avaliação de características. Também temos que ambas etapas dependem da revisão subjetiva de especialistas e dado o tamanho das imagens, essa revisão torna-se bastante proibitiva. A partir das melhores estratégias estudadas e dos conhecimentos obtidos da etapa de segmentação, poderemos desenvolver modelos capazes de avaliar com alta precisão as características obtidas pelos métodos computacionais. Esses modelos podem ser utilizados na etapa de refinamento das características, pois seremos capazes de comparar os diversos resultados obtidos e assim extrapolar a necessidade da revisão de especialistas.
+Atualmente, na etapa de segmentação, algumas estratégias já foram utilizadas para avaliar o impacto dos parâmetros de entrada em um fluxo de trabalho. As etapas de segmentação e de avaliação de características apesar de serem etapas distintas, compartilham atributos similares. Logo, podemos utilizar dos conhecimentos obtidos da utilização dessas estratégias na etapa de segmentação para direcionar um ponto de partida do estudo que será realizado na etapa de avaliação de características. Também temos que ambas etapas dependem da revisão subjetiva de especialistas e dado o tamanho das imagens, essa revisão torna-se proibitiva. A partir das melhores estratégias estudadas e dos conhecimentos obtidos da etapa de segmentação, poderemos desenvolver modelos capazes de avaliar com alta precisão as características obtidas pelos métodos computacionais. Esses modelos podem ser utilizados na etapa de refinamento das características, pois seremos capazes de comparar os diversos resultados obtidos e assim extrapolar a necessidade da revisão de especialistas.
 
 A etapa de refinamento de características pode ser separada em duas fases. A primeira, é a aplicação de métodos e técnicas de análise de sensibilidade (SA) e a segunda fase é o refinamento dos parâmetros. O objetivo final é encontrar dentro as possíveis combinações de resultados o conjunto de valores dos parâmetros que melhor influência no resultado final.
 
@@ -94,7 +91,7 @@ Na Seção~\ref{introducao} comentamos que buscamos impactar a qualidade das an�
 
 Já estão presentes, no RTF, os métodos de SA Variance-based Decomposition (VBD)~\cite{weirs2012sensitivity}~\cite{sobol2001global}  e o Morris One-At-A-Time design (MOAT)~\cite{morris1991factorial}~\cite{campolongo2007effective}. Para o refinamento de parâmetros, os métodos existentes são o Nelder-Mead simplex (NM), Parallel Rank Order (PRO), e o Algoritmo Genético de auto-refinamento. 
 
-A maioria dos trabalhos recentes desenvolvidos para a otimização de parâmetros aplicam técnicas para modelos de segmentação específicos~\cite{kumar2003discriminative, szummer2008learning, mcintosh2007single, schultz2013open}. O sistema Tuner~\cite{torsney2011tuner} foca em algoritmos de segmentação em geral e cria modelos estatísticos que descrevem uma função de resposta da segmentação e utiliza de um modelo Gaussiano para explorar o espaço de busca. Já o sistema DAKOTA inclui método diversos de otimização de parâmetros, assim como métodos para modelagem surrogate, métodos de amostragem estatística de dados, estratégias de otimização baseada em surrogate e etc~\cite{giunta2002use}. Algumas outras opções que também serão analisadas como os métodos de otimização Particle swarm, de otimização by branch-and-fit, de otimização Bayesiana, algoritmos de Hit-and-Run.
+A maioria dos trabalhos recentes desenvolvidos para a otimização de parâmetros aplicam técnicas para modelos de segmentação específicos~\cite{kumar2003discriminative, szummer2008learning, mcintosh2007single, schultz2013open}. O sistema Tuner~\cite{torsney2011tuner} foca em algoritmos de segmentação em geral e cria modelos estatísticos que descrevem uma função de resposta da segmentação e utiliza de um modelo Gaussiano para explorar o espaço de busca. Já o sistema DAKOTA inclui métodos diversos de otimização de parâmetros, assim como métodos para modelagem surrogate, métodos de amostragem estatística de dados, estratégias de otimização baseada em surrogate e etc~\cite{giunta2002use}. Algumas outras opções que também serão analisadas como os métodos de otimização Particle swarm, de otimização by branch-and-fit, de otimização Bayesiana, algoritmos de Hit-and-Run.
 
 Estes métodos serão utilizados como ponto de partida, pois nenhum deles é voltado para a análise de imagens médicas de patologia, logo não são diretamente aplicáveis. Além disso, não existe uma ferramenta ou estudo que aborda o problema de refinamento de parâmetros e/ou de análise de parâmetros voltado para entendimento de características das células de uma imagem, que é o foco desse trabalho.
 
@@ -123,10 +120,11 @@ Este trabalho será realizado em 5 etapas:
 		\hline
 		\multicolumn{1}{|l|}{Atividade} & \multicolumn{2}{l|}{2017} & \multicolumn{2}{l|}{2018} \\ \hline
 		& 1\degree    & 2\degree    & 1\degree    & 2\degree    \\ \hline
-		Cursar Disciplinas de Mestrado  & X           &  X           &             &             \\ \hline
+		Cursar Disciplinas de Mestrado  & X           &             &             &             \\ \hline
 		Revisão Bibliográfica           & X           & X           &             &             \\ \hline
-		Implementação das tarefas X, Y  &             & X           & X           &             \\ \hline
-		Implementação de W, Z     &             &             & X           &             \\ \hline
+		Implementação da modelagem das características  &             & X           & X           &             \\ \hline
+		Implementação dos métodos de refinamento     &            & X           & X           &             \\ \hline
+		Realização de testes     &             & X           & X           &  X          \\ \hline
 		Escrita Da Dissertação          &             &             & X           & X           \\ \hline
 	\end{tabular}
 \end{table}
